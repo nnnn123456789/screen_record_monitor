@@ -2,7 +2,7 @@
 
 Public Class Form1
     Dim MonitorName As String = ""
-    Public flagR As Boolean, flagP As Boolean, flagE As Boolean
+    Public flagR As Boolean
     Public Function GetProcNames() As String()
         Dim processes = System.Diagnostics.Process.GetProcesses()
         Dim prcNames(processes.Length) As String
@@ -84,11 +84,6 @@ Public Class Form1
                 Exit For
             End If
         Next
-        If flagP = True Or flagE = True Then
-            Timer1.Enabled = False
-            MsgBox("请运行录屏!", MsgBoxStyle.OkOnly + MsgBoxStyle.SystemModal, "注意")
-            Timer1.Enabled = True
-        End If
     End Sub
 
     Private Sub BtnDebug_Click(sender As Object, e As EventArgs)
@@ -119,6 +114,8 @@ Public Class Form1
         Dim Filename = InputBox("请输入监控列表").Trim()
         Readfile(Filename)
     End Sub
+
+
 
     Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
 
